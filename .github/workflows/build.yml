@@ -12,8 +12,6 @@ jobs:
     strategy:
       matrix:
         repos: 
-          - gnome-icon-theme
-          - gnome-icon-theme-symbolic
           - gnome-shell-extension-clipboard-indicator
           - gnome-shell-extension-dash-to-panel
           - gnome-shell-extension-vitals
@@ -28,7 +26,6 @@ jobs:
           - ttf-wps-fonts
           - utools
           - v2raya-bin
-          - wechat-uos
           - wemeet-bin
           - wps-office
           - yay-bin
