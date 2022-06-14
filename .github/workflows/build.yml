@@ -24,7 +24,7 @@ jobs:
           - rime-cloverpinyin
           - netease-cloud-music
           - microsoft-edge-stable-bin
-          - mcmojave-circle-icon-theme
+          - numix-circle-icon-theme-git
           - gnome-shell-extension-vitals
           - intellij-idea-ultimate-edition
           - gnome-shell-extension-dash-to-panel
