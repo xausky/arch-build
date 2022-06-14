@@ -82,11 +82,11 @@ jobs:
         with:
           RCLONE_ONEDRIVE_CLIENT_ID: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_ID }}
           RCLONE_ONEDRIVE_CLIENT_SECRET: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_SECRET }}
-          RCLONE_ONEDRIVE_REGION: global
+          RCLONE_ONEDRIVE_REGION: ${{ secrets.RCLONE_ONEDRIVE_REGION }}
           RCLONE_ONEDRIVE_TOKEN: ${{ secrets.RCLONE_ONEDRIVE_TOKEN }}
           RCLONE_ONEDRIVE_DRIVE_ID: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_ID }}
-          RCLONE_ONEDRIVE_DRIVE_TYPE: personal
+          RCLONE_ONEDRIVE_DRIVE_TYPE: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_TYPE }}
           dest_path: /archrepo
-          repo_name: vifly
+          repo_name: xausky
           gpg-privatekey: ${{ secrets.gpg_private_key }}
           local_path: ${{ steps.download.outputs.download-path }}
