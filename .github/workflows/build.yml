@@ -23,6 +23,7 @@ jobs:
           - mojave-gtk-theme
           - rime-cloverpinyin
           - netease-cloud-music
+          - numix-icon-theme-git
           - microsoft-edge-stable-bin
           - numix-circle-icon-theme-git
           - gnome-shell-extension-vitals
