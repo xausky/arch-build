@@ -21,4 +21,5 @@ fi
 cd upload_packages || exit 1
 
 repo-add "./${repo_name:?}.db.tar.gz" ./*.tar.zst
+rclone delete --rmdirs "onedrive:${dest_path:?}"
 rclone copy ./ "onedrive:${dest_path:?}" --copy-links

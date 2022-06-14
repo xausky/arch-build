@@ -11,24 +11,23 @@ jobs:
   Build:
     strategy:
       matrix:
-        repos: 
-          - gnome-shell-extension-clipboard-indicator
-          - gnome-shell-extension-dash-to-panel
-          - gnome-shell-extension-vitals
-          - intellij-idea-ultimate-edition-jre
-          - jxplorer
-          - mcmojave-circle-icon-theme
-          - microsoft-edge-stable-bin
-          - mojave-gtk-theme
-          - netease-cloud-music
-          - rime-cloverpinyin
-          - rime-symbols
-          - ttf-wps-fonts
+        repos:
           - utools
+          - yay-bin
+          - jxplorer
+          - wps-office
           - v2raya-bin
           - wemeet-bin
-          - wps-office
-          - yay-bin
+          - rime-symbols
+          - ttf-wps-fonts
+          - mojave-gtk-theme
+          - rime-cloverpinyin
+          - netease-cloud-music
+          - microsoft-edge-stable-bin
+          - mcmojave-circle-icon-theme
+          - gnome-shell-extension-vitals
+          - gnome-shell-extension-dash-to-panel
+          - gnome-shell-extension-clipboard-indicator
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -40,11 +39,10 @@ jobs:
       with:
         path: ./${{ matrix.repos }}/*.pkg.tar.zst
         name: ${{ matrix.repos }}
-  UploadToOneDrive:      
+  UploadToOneDrive:
     runs-on: ubuntu-latest
     if: always()
     needs: [Build]
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
