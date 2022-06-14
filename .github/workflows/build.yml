@@ -8,76 +8,50 @@ on:
     - cron:  '1 */8 * * *'
 
 jobs:
-  buildAUR:
+  Build:
     strategy:
       matrix:
-        repos: [osu-lazer, weechat-notify-send, fpp, redsocks, drill, k6, redis-desktop-manager, git-cola, makedeb, f3d]
-
+        repos: 
+          - gnome-icon-theme
+          - gnome-icon-theme-symbolic
+          - gnome-shell-extension-clipboard-indicator
+          - gnome-shell-extension-dash-to-panel
+          - gnome-shell-extension-vitals
+          - intellij-idea-ultimate-edition-jre
+          - jxplorer
+          - mcmojave-circle-icon-theme
+          - microsoft-edge-stable-bin
+          - mojave-gtk-theme
+          - netease-cloud-music
+          - rime-cloverpinyin
+          - rime-symbols
+          - ttf-wps-fonts
+          - utools
+          - v2raya-bin
+          - wechat-uos
+          - wemeet-bin
+          - wps-office
+          - yay-bin
       fail-fast: false
-      
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v2
-    
     - uses: ./build-aur-action
       with:
         repo-name: ${{ matrix.repos }}
-    
     - uses: actions/upload-artifact@v2
       with:
         path: ./*/*.pkg.tar.zst
         name: ${{ matrix.repos }}
-        
-    - uses: ncipollo/release-action@v1
-      with:
-        allowUpdates: true
-        tag: "packages"
-        artifacts: "./*/*.zst"
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-  buildNonAUR:
-    strategy:
-      matrix:
-        PKGBUILDs: [breeze10, python-octodns]
-
-      fail-fast: false
-      
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build Non-AUR packages
-        id: makepkg
-        uses: ./build-nonaur-action
-        with:
-          pkgdir: ${{ matrix.PKGBUILDs }}
-          aurDeps: true
-          
-      - uses: actions/upload-artifact@v2
-        with:
-          path: ./*/*.pkg.tar.zst
-          name: ${{ matrix.PKGBUILDs }}
-      
-      - uses: ncipollo/release-action@v1
-        with:
-          allowUpdates: true
-          tag: "packages"
-          artifacts: ${{ steps.makepkg.outputs.pkgfile0 }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
-  uploadToOneDrive:      
+  UploadToOneDrive:      
     runs-on: ubuntu-latest
     if: always()
-    needs: [buildAUR, buildNonAUR]
+    needs: [Build]
 
     steps:
       - uses: actions/checkout@v2
-      
       - uses: actions/download-artifact@v2
         id: download
-      
       - uses: ./create-db-and-upload-action
         with:
           RCLONE_ONEDRIVE_CLIENT_ID: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_ID }}
@@ -88,5 +62,4 @@ jobs:
           RCLONE_ONEDRIVE_DRIVE_TYPE: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_TYPE }}
           dest_path: /Public/ArchRepo
           repo_name: xausky
-          gpg-privatekey: ${{ secrets.gpg_private_key }}
           local_path: ${{ steps.download.outputs.download-path }}
