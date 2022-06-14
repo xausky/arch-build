@@ -26,6 +26,7 @@ jobs:
           - microsoft-edge-stable-bin
           - mcmojave-circle-icon-theme
           - gnome-shell-extension-vitals
+          - intellij-idea-ultimate-edition
           - gnome-shell-extension-dash-to-panel
           - gnome-shell-extension-clipboard-indicator
       fail-fast: false
