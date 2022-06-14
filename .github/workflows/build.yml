@@ -38,7 +38,7 @@ jobs:
         repo-name: ${{ matrix.repos }}
     - uses: actions/upload-artifact@v2
       with:
-        path: ./*/*.pkg.tar.zst
+        path: ./${{ matrix.repos }}/*.pkg.tar.zst
         name: ${{ matrix.repos }}
   UploadToOneDrive:      
     runs-on: ubuntu-latest
