@@ -8,5 +8,5 @@ chmod -R a+rw .
 
 pacman -Sy --noconfirm
 pacman -U --noconfirm /yay.pkg.tar.zst
-
-sudo --set-home -u builder yay -S --noconfirm --builddir=./ "$pkgname"
+sudo --set-home -u builder mkdir ./build
+sudo --set-home -u builder yay -S --noconfirm --builddir=./build "$pkgname"

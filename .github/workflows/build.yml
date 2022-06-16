@@ -23,11 +23,11 @@ jobs:
           - mojave-gtk-theme
           - rime-cloverpinyin
           - netease-cloud-music
-          - numix-icon-theme-git
+          - visual-studio-code-bin
           - microsoft-edge-stable-bin
-          - numix-circle-icon-theme-git
           - gnome-shell-extension-vitals
           - intellij-idea-ultimate-edition
+          - mcmojave-circle-icon-theme-git
           - gnome-shell-extension-dash-to-panel
           - gnome-shell-extension-clipboard-indicator
       fail-fast: false
@@ -39,7 +39,7 @@ jobs:
         repo-name: ${{ matrix.repos }}
     - uses: actions/upload-artifact@v2
       with:
-        path: ./${{ matrix.repos }}/*.pkg.tar.zst
+        path: ./build/${{ matrix.repos }}/*.pkg.tar.zst
         name: ${{ matrix.repos }}
   UploadToOneDrive:
     runs-on: ubuntu-latest
