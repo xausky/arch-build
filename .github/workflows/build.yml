@@ -21,6 +21,7 @@ jobs:
           - rime-symbols
           - ttf-wps-fonts
           - mojave-gtk-theme
+          - yuzu-mainline-bin
           - rime-cloverpinyin
           - netease-cloud-music
           - visual-studio-code-bin
