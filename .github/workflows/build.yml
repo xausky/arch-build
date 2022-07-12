@@ -15,7 +15,6 @@ jobs:
           - utools
           - yay-bin
           - jxplorer
-          - resp-app
           - wps-office
           - v2raya-bin
           - wemeet-bin
