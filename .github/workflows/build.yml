@@ -49,15 +49,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
-        id: download
-      - uses: ./create-db-and-upload-action
+      - uses: bxb100/action-upload-webdav@v1
         with:
-          RCLONE_ONEDRIVE_CLIENT_ID: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_ID }}
-          RCLONE_ONEDRIVE_CLIENT_SECRET: ${{ secrets.RCLONE_ONEDRIVE_CLIENT_SECRET }}
-          RCLONE_ONEDRIVE_REGION: ${{ secrets.RCLONE_ONEDRIVE_REGION }}
-          RCLONE_ONEDRIVE_TOKEN: ${{ secrets.RCLONE_ONEDRIVE_TOKEN }}
-          RCLONE_ONEDRIVE_DRIVE_ID: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_ID }}
-          RCLONE_ONEDRIVE_DRIVE_TYPE: ${{ secrets.RCLONE_ONEDRIVE_DRIVE_TYPE }}
-          dest_path: /Public/ArchRepo
-          repo_name: xausky
-          local_path: ${{ steps.download.outputs.download-path }}
+          webdav_address: ${{secrets.address}}
+          webdav_username: ${{secrets.username}}
+          webdav_password: ${{secrets.password}}
+          webdav_upload_path: "/ArchRepo"
+          files: ${{ steps.download.outputs.download-path }}
