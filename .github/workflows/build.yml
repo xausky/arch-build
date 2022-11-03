@@ -13,24 +13,6 @@ jobs:
       matrix:
         repos:
           - utools
-          - yay-bin
-          - jxplorer
-          - wps-office
-          - v2raya-bin
-          - wemeet-bin
-          - rime-symbols
-          - ttf-wps-fonts
-          - mojave-gtk-theme
-          - yuzu-mainline-bin
-          - rime-cloverpinyin
-          - netease-cloud-music
-          - visual-studio-code-bin
-          - microsoft-edge-stable-bin
-          - gnome-shell-extension-vitals
-          - intellij-idea-ultimate-edition
-          - mcmojave-circle-icon-theme-git
-          - gnome-shell-extension-dash-to-panel
-          - gnome-shell-extension-clipboard-indicator
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
@@ -51,8 +33,8 @@ jobs:
       - uses: actions/download-artifact@v2
       - uses: bxb100/action-upload-webdav@v1
         with:
-          webdav_address: ${{secrets.address}}
-          webdav_username: ${{secrets.username}}
-          webdav_password: ${{secrets.password}}
+          webdav_address: ${{secrets.ADDRESS}}
+          webdav_username: ${{secrets.USERNAME}}
+          webdav_password: ${{secrets.PASSWORD}}
           webdav_upload_path: "/ArchRepo"
           files: ${{ steps.download.outputs.download-path }}
