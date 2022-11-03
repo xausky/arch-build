@@ -41,4 +41,4 @@ jobs:
           webdav_username: ${{secrets.USERNAME}}
           webdav_password: ${{secrets.PASSWORD}}
           webdav_upload_path: "/ArchRepo"
-          files: ./build/${{ matrix.repos }}/*.pkg.tar.zst
+          files: ./build/*/*.pkg.tar.zst
