@@ -33,6 +33,7 @@ jobs:
         with:
           path: ./build
           key: build
+      - run: curl ${{secrets.ADDRESS}} -v
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
