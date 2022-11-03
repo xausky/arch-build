@@ -17,24 +17,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/actions/cache@v3
+      with:
+        path: ./build
+        key: build
     - uses: ./build-aur-action
       with:
         repo-name: ${{ matrix.repos }}
-    - uses: actions/upload-artifact@v2
-      with:
-        path: ./build/${{ matrix.repos }}/*.pkg.tar.zst
-        name: ${{ matrix.repos }}
-  UploadToOneDrive:
+  Upload:
     runs-on: ubuntu-latest
     if: always()
     needs: [Build]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/actions/cache@v3
+        with:
+          path: ./build
+          key: build
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
           webdav_username: ${{secrets.USERNAME}}
           webdav_password: ${{secrets.PASSWORD}}
           webdav_upload_path: "/ArchRepo"
-          files: ${{ steps.download.outputs.download-path }}
+          files: ./build/**
