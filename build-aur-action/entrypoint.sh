@@ -13,6 +13,7 @@ pacman -U --noconfirm /yay.pkg.tar.zst
 mkdir ./build
 chown builder:builder -R ./build
 sudo --set-home -u builder yay -S --noconfirm --builddir=./build $pkgname
+rm -r ./build/dist
 mkdir ./build/dist
 cp ./build/*/*.tar.zst ./build/dist
 repo-add "./build/dist/xausky.db.tar.gz" ./build/dist/*.tar.zst
