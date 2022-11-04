@@ -20,7 +20,7 @@ jobs:
       - uses: ./build-aur-action
         with:
           repo-name: |
-            yay
+            yay-bin
             clash-for-windows-bin
             gnome-shell-extension-clipboard-indicator
             gnome-shell-extension-dash-to-dock
