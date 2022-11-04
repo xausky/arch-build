@@ -19,7 +19,7 @@ jobs:
           restore-keys: build-
       - uses: ./build-aur-action
         with:
-          repo-name: utools mojave-gtk-theme
+          repo-name: utools mojave-gtk-theme microsoft-edge-stable-bin
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
