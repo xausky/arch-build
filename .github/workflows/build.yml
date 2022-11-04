@@ -17,11 +17,13 @@ jobs:
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: xausky/action-cache-always@v3.0.0
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
       with:
         path: ./build
-        key: build
+        key: build-${{env.GITHUB_RUN_NUMBER}}
+        restore-keys: |
+          build-
     - uses: ./build-aur-action
       with:
         repo-name: ${{ matrix.repos }}
@@ -30,11 +32,12 @@ jobs:
     if: always()
     needs: [Build]
     steps:
-      - uses: xausky/action-cache-always@v3.0.0
+      - uses: actions/cache@v3
         with:
           path: ./build
-          key: build
-      - run: curl ${{secrets.ADDRESS}} -v
+          key: build-${{env.GITHUB_RUN_NUMBER}}
+          restore-keys: |
+            build-
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
