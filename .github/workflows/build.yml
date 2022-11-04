@@ -26,4 +26,4 @@ jobs:
           webdav_username: ${{secrets.USERNAME}}
           webdav_password: ${{secrets.PASSWORD}}
           webdav_upload_path: "/ArchRepo"
-          files: ./build/*/*.pkg.tar.zst
+          files: ./build/dist/*/*.pkg.tar.zst
