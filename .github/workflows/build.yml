@@ -16,13 +16,10 @@ jobs:
         with:
           path: ./build
           key: ${{format('build-{0}', github.run_number)}}
-          restore-keys: |
-            build-
+          restore-keys: build-
       - uses: ./build-aur-action
         with:
-          repo-name: |
-            utools
-            mojave-gtk-theme
+          repo-name: utools mojave-gtk-theme
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
