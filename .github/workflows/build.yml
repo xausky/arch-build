@@ -8,36 +8,19 @@ on:
     - cron:  '0 18 * * *'
 
 jobs:
-  Build:
-    strategy:
-      matrix:
-        repos:
-          - utools
-          - mojave-gtk-theme
-      fail-fast: false
+  Run:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
-      with:
-        path: ./build
-        key: build-${{env.GITHUB_RUN_NUMBER}}
-        restore-keys: |
-          build-
-    - uses: ./build-aur-action
-      with:
-        repo-name: ${{ matrix.repos }}
-  Upload:
-    runs-on: ubuntu-latest
-    if: always()
-    needs: [Build]
-    steps:
+      - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
           path: ./build
           key: build-${{env.GITHUB_RUN_NUMBER}}
           restore-keys: |
             build-
+      - uses: ./build-aur-action
+        with:
+          repo-name: mojave-gtk-theme
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
