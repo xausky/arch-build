@@ -15,7 +15,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./build
-          key: build-${{env.GITHUB_RUN_NUMBER}}
+          key: build-${GITHUB_RUN_NUMBER}
           restore-keys: |
             build-
       - uses: ./build-aur-action
