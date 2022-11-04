@@ -2,6 +2,9 @@
 
 pkgname=$1
 
+echo "[multilib]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
 useradd builder -m
 echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
