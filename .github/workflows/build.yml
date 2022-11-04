@@ -19,7 +19,17 @@ jobs:
           restore-keys: build-
       - uses: ./build-aur-action
         with:
-          repo-name: utools mojave-gtk-theme microsoft-edge-stable-bin
+          repo-name: |
+            yay
+            clash-for-windows-bin
+            gnome-shell-extension-clipboard-indicator
+            gnome-shell-extension-dash-to-dock
+            gnome-shell-extension-vitals
+            intellij-idea-ultimate-edition
+            intellij-idea-ultimate-edition-jre
+            mcmojave-circle-icon-theme-git
+            mojave-gtk-theme-git
+            onlyoffice-bin
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
