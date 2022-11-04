@@ -20,7 +20,9 @@ jobs:
             build-
       - uses: ./build-aur-action
         with:
-          repo-name: mojave-gtk-theme
+          repo-name: |
+            utools
+            mojave-gtk-theme
       - uses: bxb100/action-upload-webdav@v1
         with:
           webdav_address: ${{secrets.ADDRESS}}
