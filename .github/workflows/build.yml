@@ -20,7 +20,9 @@ jobs:
       - uses: ./build-aur-action
         with:
           repo-name: |
+            jxplorer
             yay-bin
+            postman-bin
             clash-for-windows-bin
             gnome-shell-extension-clipboard-indicator
             gnome-shell-extension-dash-to-dock
