@@ -13,7 +13,7 @@ chmod -R a+rwx .
 pacman -Suy --noconfirm
 pacman -S base-devel git python-pip pyalpm tree --noconfirm
 pip install pikaur
-sudo -u builder python -m pikaur -Sw --noconfirm $pkgname
+sudo --preserve-env=HOME -u builder python -m pikaur -Sw --noconfirm $pkgname
 tree -a
 mkdir ./dist
 cp ~/.cache/pikaur/pkg/*.tar.zst ./dist
