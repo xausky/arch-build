@@ -27,4 +27,4 @@ jobs:
           webdav_username: ${{secrets.USERNAME}}
           webdav_password: ${{secrets.PASSWORD}}
           webdav_upload_path: "/ArchRepo"
-          files: ./build/dist/**
+          files: /home/builder/.cache/pikaur/pkg/**
