@@ -6,15 +6,18 @@ echo "[multilib]" >> /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 useradd builder -m
+
 echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-chmod -R a+rwx .
 
 pacman -Suy --noconfirm
 pacman -S base-devel git python-pip pyalpm tree --noconfirm
-pip install pikaur
+
+chmod -R a+rwx .
+sudo --preserve-env=HOME -u builder pip install pikaur
 sudo --preserve-env=HOME -u builder python -m pikaur -Sw --noconfirm $pkgname
-tree -a
+
+tree -a .
 mkdir ./dist
 cp ~/.cache/pikaur/pkg/*.tar.zst ./dist
 repo-add "./dist/xausky.db.tar.gz" ./dist/*.tar.zst
