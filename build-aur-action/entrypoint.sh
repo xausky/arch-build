@@ -13,10 +13,17 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 pacman -Suy --noconfirm
 pacman -S base-devel git python-pip pyalpm tree --noconfirm
 
+
+sudo --set-home -u builder mkdir -p /home/builder/.cache/pikaur
+
+mkdir ./dist
+chmod -R 0777 ./dist
+ln -s ./dist /home/builder/.cache/pikaur/pkg
+
 sudo --set-home -u builder pip install pikaur
 sudo --set-home -u builder python -m pikaur -Sw --noconfirm $pkgname
 
-tree -a /home/builder
-mkdir ./dist
+tree -a .
+
 cp ~/.cache/pikaur/pkg/*.tar.zst ./dist
 repo-add "./dist/xausky.db.tar.gz" ./dist/*.tar.zst
