@@ -11,7 +11,7 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 chmod -R a+rw .
 
 pacman -Suy --noconfirm
-pacman -S base-devel git python-pip pyalpm --noconfirm
+pacman -S base-devel git python-pip pyalpm tree --noconfirm
 pip install pikaur
 sudo --set-home -u builder python -m pikaur -Sw --noconfirm $pkgname
 tree .
