@@ -8,12 +8,12 @@ echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 useradd builder -m
 echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-chmod -R a+rw .
+chmod -R a+rwx .
 
 pacman -Suy --noconfirm
 pacman -S base-devel git python-pip pyalpm tree --noconfirm
 pip install pikaur
-sudo --preserve-env=HOME -u builder python -m pikaur -Sw --noconfirm $pkgname
+sudo -u builder python -m pikaur -Sw --noconfirm $pkgname
 tree -a
 mkdir ./dist
 cp ~/.cache/pikaur/pkg/*.tar.zst ./dist
