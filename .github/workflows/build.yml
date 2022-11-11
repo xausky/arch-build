@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: ./dist
-          key: ${{format('dist-{0}', github.run_number)}}
-          restore-keys: dist-
       - uses: ./build-aur-action
         with:
           repo-name: |
