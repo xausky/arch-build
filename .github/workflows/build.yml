@@ -15,12 +15,14 @@ jobs:
       - uses: ./build-aur-action
         with:
           repo-name: |
+            wemeet-bin
             jxplorer
             yay-bin
             postman-bin
             microsoft-edge-stable-bin
             utools
             clash-for-windows-bin
+            visual-studio-code-bin
             gnome-shell-extension-clipboard-indicator
             gnome-shell-extension-dash-to-dock
             gnome-shell-extension-vitals
