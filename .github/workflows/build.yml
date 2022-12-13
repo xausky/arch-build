@@ -20,16 +20,10 @@ jobs:
             yay-bin
             postman-bin
             microsoft-edge-stable-bin
-            utools
-            clash-for-windows-bin
             visual-studio-code-bin
-            gnome-shell-extension-clipboard-indicator
-            gnome-shell-extension-dash-to-dock
-            gnome-shell-extension-vitals
+            onlyoffice-bin
             intellij-idea-ultimate-edition
             intellij-idea-ultimate-edition-jre
-            mcmojave-circle-icon-theme-git
-            mojave-gtk-theme-git
             com.qq.weixin.deepin
             com.qq.weixin.work.deepin-x11
       - uses: bxb100/action-upload-webdav@v1
